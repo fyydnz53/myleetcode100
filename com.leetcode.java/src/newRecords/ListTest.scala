@@ -11,16 +11,26 @@ import java.util
 object $2_AddTwoNumbers {
 
   def main(args: Array[String]): Unit = {
-    val l1 = new ListNode(4, new ListNode(5, new ListNode(3, new ListNode(5))))
-    val l2 = new ListNode(6, new ListNode(4))
-    var node = addTwoNumbers(l1, l2)
-    var node2 = reverseBetween3(l1, 1, 4)
-    while (node2 != null) {
-      println(node2
-        .x)
-      node2 = node2
-        .next
-    }
+    /*    val l1 = new ListNode(4, new ListNode(5, new ListNode(3, new ListNode(5))))
+        val l2 = new ListNode(6, new ListNode(4))
+        var node = addTwoNumbers(l1, l2)
+        var node2 = reverseBetween3(l1, 1, 4)
+        while (node2 != null) {
+          println(node2
+            .x)
+          node2 = node2
+            .next
+        }*/
+    val l1 = new ListNode(1)
+    val l2 = new ListNode(2)
+    val l3 = new ListNode(3)
+    l1
+      .next = l2
+    l2
+      .next = l3
+    l3
+      .next = l1
+    println(detectCycle(l1))
   }
 
   def addTwoNumbers(l1: ListNode, l2: ListNode): ListNode = {
@@ -194,17 +204,19 @@ object $2_AddTwoNumbers {
     }
     var a = headA
     var b = headB
-    while(a!=b){
-     if(a == null){
-       a = headB
-     }else{
-       a = a.next
-     }
+    while (a != b) {
+      if (a == null) {
+        a = headB
+      } else {
+        a = a
+          .next
+      }
 
-      if(b == null){
+      if (b == null) {
         b = headA
-      }else{
-        b = b.next
+      } else {
+        b = b
+          .next
       }
     }
     a
@@ -213,27 +225,85 @@ object $2_AddTwoNumbers {
 
   def hasCycle(head: ListNode): Boolean = {
     var step01 = head
-    var step02:ListNode = null
-    if(step01!=null){
-      step02 = head.next
+    var step02: ListNode = null
+    if (step01 != null) {
+      step02 = head
+        .next
     }
 
-    while (step02 != null && step01 != null){
-      if (step01 == step02){
+    while (step02 != null && step01 != null) {
+      if (step01 == step02) {
         return true
       }
 
-      step01 = step01.next
+      step01 = step01
+        .next
 
-      if(step02.next != null){
-        step02 = step02.next.next
-      }else{
+      if (step02
+        .next != null) {
+        step02 = step02
+          .next
+          .next
+      } else {
         return false
       }
     }
 
     false
 
+  }
+
+  /**
+   * x1 头到环的距离
+   * x2 慢节点被追上的距离
+   * x3 追上点到结尾的距离
+   * x1 + x2 = l1
+   * x1 + 2x2 + x3 = l2
+   * l2 = 2 * l1
+   * 所以 x1 = x3
+   *
+   * @param head
+   * @return
+   */
+  def detectCycle(head: ListNode): ListNode = {
+    if (head == null) return null
+    var step01 = head;
+    var step02 = head
+    if (step01 != null) {
+      step02 = head
+        .next
+    }
+    var step03: ListNode = head;
+
+    while (step02 != null && step01 != null) {
+      if (step01 == step02) {
+        while (step01 != null && step03 != null) {
+          step01 = step01
+            .next
+          if (step01 == step03) {
+            return step03
+          }
+
+          step03 = step03
+            .next
+        }
+      } else {
+
+        step01 = step01
+          .next
+
+        if (step02
+          .next != null) {
+          step02 = step02
+            .next
+            .next
+        } else {
+          return null
+        }
+      }
+    }
+
+    null
   }
 }
 
