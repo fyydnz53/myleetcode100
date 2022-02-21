@@ -1,4 +1,4 @@
-package newRecords
+package com.leetcode.list
 
 object MergeLists {
 
@@ -44,4 +44,27 @@ object MergeLists {
     list2
   }
 
+  /**
+   * 分治法分而治之,两两合一
+   * @param lists
+   * @return
+   */
+  def mergeKLists(lists: Array[ListNode]): ListNode = {
+    if(lists.length == 0){
+      return null
+    }
+
+    if(lists.length == 1){
+      return lists(0)
+    }
+
+    if(lists.length == 2){
+      return mergeTwoLists2(lists(0),lists(1))
+    }
+
+    val num = lists.length/2
+    val left = mergeKLists(lists.take(num))
+    val right = mergeKLists(lists.takeRight(lists.length-num))
+    mergeTwoLists2(left,right)
+  }
 }

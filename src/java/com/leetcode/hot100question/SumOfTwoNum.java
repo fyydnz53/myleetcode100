@@ -1,4 +1,4 @@
-package hot100question;
+package com.leetcode.hot100question;
 
 import java.util.HashMap;
 import java.util.Map;

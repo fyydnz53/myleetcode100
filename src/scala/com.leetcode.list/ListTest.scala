@@ -1,4 +1,4 @@
-package newRecords
+package com.leetcode.list
 
 import java.util
 
