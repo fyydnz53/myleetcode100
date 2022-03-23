@@ -18,7 +18,7 @@ public class testPartition {
             }
             head = head.next;
         }
-        tmpB.next = null;
+        tmpB.next = null; 
          tmpS.next = big.next;
         return small.next;
 

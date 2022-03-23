@@ -5,9 +5,9 @@ import java.util.Map;
 //给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 public class SonString03 {
     public static void main(String[] args) {
-        System.out.println(Solution.lengthOfLongestSubstring("asjrgapa"));
-      System.out.println(Solution.lengthOfLongestSubstring("ohomm"));
-        System.out.println(Solution.lengthOfLongestSubstring("aabaab!bb"));
+        System.out.println(lengthOfLongestSubstring("asjrgapa"));
+      System.out.println(lengthOfLongestSubstring("ohomm"));
+        System.out.println(lengthOfLongestSubstring("aabaab!bb"));
 /*        System.out.println(Solution.lengthOfLongestSubstring("mnksdfasfb"));
         System.out.println(Solution.lengthOfLongestSubstring("mnksdfasfboiuy"));
         System.out.println(Solution.lengthOfLongestSubstring("asdfghjkl"));
@@ -47,5 +47,23 @@ public class SonString03 {
 
             return map.size()==s.length()?s.length():m>y?m:y;
         }
+    }
+    public static int lengthOfLongestSubstring(String s) {
+        Map<Character,Integer> map = new HashMap<>();
+        int start = 0;
+        int length = 1;//最长重复字段长度
+        for (int i = 0; i <s.length() ; i++) {
+            char c = s.charAt(i);
+            if(map.containsKey(c) && map.getOrDefault(c,0)>=start){
+               int tmp = i-start;
+               length = tmp > length?tmp:length;
+                start = map.get(c) + 1;
+            }
+            map.put(c,i);
+        }
+
+
+
+        return length>s.length()-start?length:s.length()-start;
     }
 }
