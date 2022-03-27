@@ -3,8 +3,8 @@ package com.leetcode.hot100question;
 public class testPartition {
 
     public ListNode partition(ListNode head, int x) {
-        ListNode big = new ListNode();
-        ListNode small = new ListNode();
+        ListNode big = new ListNode(0,null);
+        ListNode small = new ListNode(0,null);
         ListNode tmpS = small;
         ListNode tmpB = big;
 
