@@ -23,7 +23,7 @@ object SortTest {
           flag = false
         }
       }
-      if(flag){
+      if (flag) {
         //完全通畅直接返回
         return array
       }
@@ -57,8 +57,8 @@ object SortTest {
    */
   def mergeSort(list: List[Int], list1: List[Int]): List[Int] = {
     (list, list1) match {
-      case (_, Nil) => _
-      case (Nil, _) => _
+      case (a, Nil) => a
+      case (Nil, a) => a
       case (head1 :: tail1, head2 :: tail2) => {
         if (head1 < head2) {
           head1 :: mergeSort(tail1, list1);
