@@ -2,6 +2,9 @@ package com.leetcode.hot100question.twoPointer
 
 import scala.collection.mutable
 
+/**
+ * 最长不重复子串.
+ */
 object $3_longest_children_str {
 
   def main(args: Array[String]): Unit = {
