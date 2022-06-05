@@ -29,6 +29,7 @@
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../programfile/scala/lib/scala-actors-migration_2.11-1.1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../programfile/scala/lib/scala-actors-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../programfile/scala/lib/scala-actors-2.11.0.jar!/" />
     </SOURCES>
   </library>
 </component>
