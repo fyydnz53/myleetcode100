@@ -9,7 +9,7 @@ public class testPartition {
         ListNode tmpB = big;
 
         while (head != null) {
-            if (head.x < x) {
+            if (head.val < x) {
                 tmpS.next = head;
                 tmpS = tmpS.next;
             }else{

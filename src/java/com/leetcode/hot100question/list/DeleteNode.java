@@ -8,12 +8,12 @@ public class DeleteNode {
         if (head == null){
             return null;
         }
-        if (head.x == val){
+        if (head.val == val){
             return head.next;
         }
         ListNode tmp = head;
         while (tmp.next != null){
-            if (tmp.next.x == val){
+            if (tmp.next.val == val){
                 tmp.next = tmp.next.next;
                 return head;
             }

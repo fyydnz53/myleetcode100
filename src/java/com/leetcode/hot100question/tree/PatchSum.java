@@ -1,8 +1,6 @@
 package com.leetcode.hot100question.tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author jiang
@@ -30,5 +28,20 @@ public class PatchSum {
         dfs(node.left,target-node.val,parent);
         dfs(node.right,target-node.val,parent);
         parent.removeLast();
+    }
+
+    Map<Integer,Integer> map = new HashMap<>(16);
+    public int majorityElement(int[] nums) {
+        for(int i = 0;i < nums.length;i++){
+            if(map.containsKey(nums[i])){
+                map.put(nums[i],map.get(nums[i])+1);
+                if(map.get(nums[i])>nums.length/2){
+                    return nums[i];
+                }
+            }else{
+                map.put(nums[i],1);
+            }
+        }
+        return -1;
     }
 }
